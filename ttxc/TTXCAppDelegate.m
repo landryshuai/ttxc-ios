@@ -7,14 +7,35 @@
 //
 
 #import "TTXCAppDelegate.h"
+#import "GuideViewController.h"
+#import "MainViewController.h"
 
 @implementation TTXCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    // Override point for customization after application launch.
+    //增加标识，用于判断是否是第一次启动应用...
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
+    }
+    
+    
+    self.navController = [[UINavigationController alloc] init];
+    self.window.rootViewController = self.navController;
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]) {
+        GuideViewController *appStartController = [[GuideViewController alloc] init];
+        [self.navController pushViewController:appStartController animated:YES];
+        //[appStartController release];
+    }else {
+        
+        MainViewController *mainViewController = [[MainViewController alloc] init];
+        [self.navController pushViewController:mainViewController animated:YES];
+    }
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

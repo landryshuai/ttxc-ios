@@ -1,0 +1,13 @@
+/* 
+  Localization.strings
+  ttxc
+
+  Created by shuaijiman on 7/19/14.
+  Copyright (c) 2014 shuaijiman. All rights reserved.
+*/
+"MAINTITLE"="天天新车";
+"MENUPAYLIST"="消费记录";
+"MENUIFCENTER"="通知中心";
+"MENUFREIND"="赠送好友";
+"MENUSETTING"="设置";
+"MENUEXIT"="注销";

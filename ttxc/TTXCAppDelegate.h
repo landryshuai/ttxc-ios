@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class GuideViewController;
 @interface TTXCAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) GuideViewController *guideViewController;
+@property (strong, nonatomic) UINavigationController *navController;
 @end
