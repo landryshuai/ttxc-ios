@@ -7,13 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MainViewController.h"
 
 @interface SideBarViewController : UIViewController
-<UITableViewDelegate, UITableViewDataSource>
-
-@property (nonatomic, strong) NSArray *listData;
-@property (nonatomic, strong) NSArray *listImg;
-@property (nonatomic) NSInteger selectedPos;
-@property (nonatomic,weak) UINavigationController *navControll;
+<UITableViewDelegate>
+@property (nonatomic, weak) MainViewController *delegate;
 @end

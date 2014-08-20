@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 @class SideBarViewController;
 @interface MainViewController : UIViewController
+<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) SideBarViewController *leftSidebarViewController;
+@property (nonatomic, strong) NSArray *listData;
+@property (nonatomic, strong) NSArray *listImg;
+@property (nonatomic) NSInteger selectedPos;
 @end

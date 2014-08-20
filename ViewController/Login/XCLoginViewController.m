@@ -20,6 +20,8 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
+    NSString* log =[NSString stringWithFormat:@"login in initWithNibName:%@", nibNameOrNil];
+    NSLog(log);
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -29,6 +31,7 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"viewDidLoad");
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
