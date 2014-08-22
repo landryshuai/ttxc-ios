@@ -61,31 +61,13 @@
 - (IBAction)gotoMainView:(id)sender {
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
     MainViewController *controller = [[MainViewController alloc] init];
-    //remove GuideViewController
-    NSMutableArray* viewControllerArray = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
-    [viewControllerArray removeObjectAtIndex:0];
-    self.navigationController.viewControllers = viewControllerArray;
     //show mainViewController
     [self.navigationController pushViewController:controller animated:YES];
-//    [self.gotoMainViewBtn setHidden:YES];
-//    NSArray *array = [UIImage splitImageIntoTwoParts:self.right.image];
-//    self.left = [[UIImageView alloc] initWithImage:[array objectAtIndex:0]];
-//    self.right = [[UIImageView alloc] initWithImage:[array objectAtIndex:1]];
-//    [self.view addSubview:self.left];
-//    [self.view addSubview:self.right];
-//    [self.scrollView setHidden:YES];
-//    [self.pageControl setHidden:YES];
-//    self.left.transform = CGAffineTransformIdentity;
-//    self.right.transform = CGAffineTransformIdentity;
-//    
-//    [UIView beginAnimations:@"split" context:nil];
-//    [UIView setAnimationDelegate:self];
-//    [UIView setAnimationDuration:1];
-//    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
-//    
-//    self.left.transform = CGAffineTransformMakeTranslation(-160 ,0);
-//    self.right.transform = CGAffineTransformMakeTranslation(160 ,0);
-//    [UIView commitAnimations];
+    //TODO: remove GuideViewController
+//    NSMutableArray* viewControllerArray = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+//    [viewControllerArray removeObjectAtIndex:0];
+//    self.navigationController.viewControllers = viewControllerArray;
+
 }
 -(void)scrollViewDidScroll:(UIScrollView *)sv
 {
