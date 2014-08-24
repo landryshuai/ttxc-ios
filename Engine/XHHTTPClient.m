@@ -51,19 +51,21 @@ failureHandler:(XHHTTPFailureHandler)failureHandler {
 }
 
 + (NSMutableURLRequest *)requestWithURLString:(NSString *)urlString HTTPMethod:(NSString *)method parameters:(NSDictionary *)parameters {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    [request setHTTPMethod:method];
-    [request setTimeoutInterval:XHHTTPClientTimeoutInterval];
-    
+    //this is for string like this:
+    //http://www.tiantianxinche.com/Login.action?login&phoneNumber=13761031423&password=123321
     NSMutableString *body = [NSMutableString string];
+    [body appendString:urlString];
     for (NSString *key in parameters) {
         NSString *val = [parameters objectForKey:key];
-        if ([body length])
-            [body appendString:@"&"];
+        [body appendString:@"&"];
         [body appendFormat:@"%@=%@", [[key description] urlEncodedUTF8String],
          [[val description] urlEncodedUTF8String]];
     }
-    [request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+    NSLog(@"url: %@",[body description]);
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[body description]]];
+    [request setHTTPMethod:method];
+    [request setTimeoutInterval:XHHTTPClientTimeoutInterval];
+    //[request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
     
     return request;
 }

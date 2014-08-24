@@ -21,7 +21,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     NSString* log =[NSString stringWithFormat:@"login in initWithNibName:%@", nibNameOrNil];
-    NSLog(log);
+    NSLog(@"%@",log);
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -64,11 +64,11 @@
     [self.accountPwd resignFirstResponder];
     [self.accountTextField resignFirstResponder];
     NSMutableString *server = [[NSMutableString alloc] init];
-    [server appendFormat:@"%@%@", BASE_SERVER_URL, ACTION_LOGIN];
+    [server appendFormat:@"%@/%@", BASE_SERVER_URL, ACTION_LOGIN];
     [XHHTTPClient GETPath:[server description] parameters:[NSDictionary dictionaryWithObjectsAndKeys:pwd,@"password",userName,@"phoneNumber", nil] jsonSuccessHandler:^(id json){
         NSLog(@"%@", json);
     } failureHandler:^(NSData *responseData, NSURLResponse *response, NSError *error){
-        NSLog(@"%@", response);
+        NSLog(@"%@, error:%@, responseData:%@", response, error, responseData);
     }];
 }
 

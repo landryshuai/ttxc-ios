@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "PKRevealController.h"
+#import "XCLoginViewController.h"
 
 @interface MainViewController ()
 
@@ -27,6 +28,10 @@
     //[self startPresentationMode];
 //    [self.revealController showViewController:self.revealController.leftViewController
 //     animated:NO completion:nil];
+    XCLoginViewController *login = [[XCLoginViewController alloc] init];
+    //[self.revealController.frontViewController pushViewController:login animated:NO];
+    //[self showViewController:login];
+    [self presentViewController:login animated:YES completion:nil];
 }
 
 - (void)viewDidLoad
@@ -46,13 +51,16 @@
 }
 - (void)startPresentationMode
 {
-    if (![self.revealController isPresentationModeActive])
+    [self.revealController showViewController:self.revealController.leftViewController];
+    /*if (![self.revealController isPresentationModeActive])
     {
+        NSLog(@"isPresentationModeActive false");
         [self.revealController enterPresentationModeAnimated:YES completion:nil];
     }
     else
     {
+        NSLog(@"isPresentationModeActive true");
         [self.revealController resignPresentationModeEntirely:NO animated:YES completion:nil];
-    }
+    }*/
 }
 @end

@@ -284,7 +284,8 @@ typedef struct
         toState = PKRevealControllerShowsRightViewController;
         toPoint = [self centerPointForState:toState];
     }
-    
+    PKLog(@"toState:%d, toPoint:x=%f,y=%f",toState, toPoint.x, toPoint.y
+          );
     if (animated)
     {
         [self animateToState:toState completion:completion];
@@ -915,6 +916,7 @@ typedef struct
 {
     if ([self isLeftViewVisible])
     {
+        PKLog(@"updateRearViewVisibility isLeftViewVisible");
         if (self.leftView.hidden)
         {
             [self showLeftView];
@@ -922,6 +924,7 @@ typedef struct
     }
     else if ([self isRightViewVisible])
     {
+        PKLog(@"updateRearViewVisibility isRightViewVisible");
         if (self.rightView.hidden)
         {
             [self showRightView];
@@ -931,6 +934,7 @@ typedef struct
     {
         if (!self.leftView.hidden || !self.rightView.hidden)
         {
+            PKLog(@"updateRearViewVisibility hideRearViews");
             [self hideRearViews];
         }
     }
@@ -1102,18 +1106,22 @@ typedef struct
     
     animation.progressHandler = ^(NSValue *fromValue, NSValue *toValue, NSUInteger index)
     {
+        PKLog(@"progressHandler");
         if ([fromValue CGPointValue].x == [self centerPointForState:PKRevealControllerShowsFrontViewController].x)
         {
+            PKLog(@"updateRearViewVisibilityForFrontViewPosition");
             [self updateRearViewVisibilityForFrontViewPosition:[toValue CGPointValue]];
         }
         else
         {
+            PKLog(@"updateRearViewVisibility");
             [self updateRearViewVisibility];
         }
     };
     
     animation.completionHandler = ^(BOOL finished)
     {
+        PKLog(@"completionHandler,%d", finished);
         if (finished)
         {
             [self updateRearViewVisibility];

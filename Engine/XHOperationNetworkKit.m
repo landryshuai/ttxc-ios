@@ -118,7 +118,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSHTTPURLResponse *response = (NSHTTPURLResponse *)_response;
     BOOL success = [[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(200, 100)] containsIndex:[response statusCode]];
-    
+    NSLog(@"status code:%d, %@", [response statusCode], _responseData);
     if ((success && _successHandler)) {
         dispatch_async(dispatch_get_main_queue(), ^{
             _successHandler(_responseData, _response);

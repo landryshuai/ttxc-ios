@@ -91,6 +91,7 @@
         XCLoginViewController *login = [[XCLoginViewController alloc] init];
         //[self.revealController.frontViewController pushViewController:login animated:NO];
         [self showViewController:login];
+        //[self presentViewController:login animated:YES completion:nil];
         return;
     }
     [self menuClick:self.selectedPos];
@@ -99,16 +100,18 @@
 
 - (void)showViewController:(UIViewController*) controller
 {
-    [self.revealController resignPresentationModeEntirely:YES
-                                                 animated:YES completion:nil];
-    if ([self.revealController.frontViewController respondsToSelector:@selector(pushViewController:animated:)]) {
+    [self.revealController setFrontViewController:controller];
+    [self.revealController showViewController:self.revealController.frontViewController animated:YES completion:nil];
+//    [self.revealController resignPresentationModeEntirely:YES
+//                                                 animated:YES completion:nil];
+    /*if ([self.revealController.frontViewController respondsToSelector:@selector(pushViewController:animated:)]) {
         NSInvocation *inv = [NSInvocation invocationWithMethodSignature:[self.revealController.frontViewController methodSignatureForSelector:@selector(pushViewController:animated:)]];
         [inv setSelector:@selector(pushViewController:animated:)];
         [inv setArgument:&controller atIndex:2];
         BOOL ani = YES;
         [inv setArgument:&ani atIndex:3];
         [inv invokeWithTarget:self.revealController.frontViewController];
-    }
+    }*/
 }
 
 -(void) menuClick:(NSInteger)pos

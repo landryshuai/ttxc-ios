@@ -33,7 +33,7 @@
 #define CLASS_CALLER_IDX 3
 #define FUNCTION_CALLER_IDX 4
 #define LINE_CALLER_IDX 5
-
+#define DEBUG 1
 void PKLog(NSString *format, ...)
 {
 #ifdef DEBUG
